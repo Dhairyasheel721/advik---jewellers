@@ -803,6 +803,42 @@
 
         updateCartUI();
         updatePaymentInfo();
-    </script>
+        </script>
+
+<!-- 1. Load Supabase via CDN -->
+<script src="https://jsdelivr.net"></script>
+
+<script>
+  // 2. Connect to your database using credentials from your screen
+  const SUPABASE_URL = 'https://supabase.co';
+  const SUPABASE_ANON_KEY = 'PASTE_YOUR_LONG_ANON_KEY_HERE'; 
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // 3. Define the database insertion function
+  async function sendOrderToSupabase() {
+      try {
+          await supabase.from('orders').insert([
+              {
+                  product_name: cart.map(item => item.name).join(', ') || 'Jewellery Item', 
+                  quantity: cart.reduce((total, item) => total + item.quantity, 0) || 1,
+                  order_total: document.getElementById('total-price')?.innerText || '₹0', 
+                  customer_name: document.getElementById('name-input')?.value || 'N/A', 
+                  customer_email: document.getElementById('email-input')?.value || 'N/A', 
+                  customer_phone: document.getElementById('phone-input')?.value || 'N/A', 
+                  delivery_pincode: document.getElementById('pincode-input')?.value || 'N/A', 
+                  delivery_address: document.getElementById('address-input')?.value || 'N/A', 
+                  delivery_city: document.getElementById('city-input')?.value || 'N/A', 
+                  delivery_state: document.getElementById('state-input')?.value || 'N/A',
+                  payment_method: document.querySelector('input[name="payment"]:checked')?.value || 'UPI',
+                  transaction_id: document.getElementById('txn-id-input')?.value || 'N/A'
+              }
+          ]);
+      } catch (err) {
+          console.error("Database save failed:", err);
+      }
+  }
+</script>
+
 </body>
 </html>
+

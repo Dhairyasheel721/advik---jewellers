@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advik Jewellers - Premium Collection</title>
+    <meta name="google-site-verification" content="9j7APBgYMjQ5kG8jYRapTdAJXkZD-Syny4QS2YnTjcI" />
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #AA7C11;
+            --charcoal: #1C1C1C;
+            --light-bg: #F9F9F9;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--charcoal);
+        }
+
+        header {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        header p {
+            font-style: italic;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: #CCCCCC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--dark-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-add {
+            background-color: var(--charcoal);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget-box {
+            background: var(--white);
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .widget-box h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #F0F0F0;
+            padding-bottom: 0.4rem;
+        }
+
+        .cart-empty {
+            color: #777777;
+            font-style: italic;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .cart-total {
+            margin-top: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: right;
+            display: block;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .contact-link.phone {
+            background-color: var(--charcoal);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--charcoal);
+            color: #888888;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+            border-top: 1px solid #333333;
+        }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .btn-buy {
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            padding: 0.6rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .btn-buy:hover {
+            background: var(--dark-gold);
+            color: var(--white);
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            color: var(--white);
+            background: var(--charcoal);
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .btn-checkout:hover {
+            background: var(--dark-gold);
+        }
+
+        .cart-item {
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 0.35rem;
+        }
+
+        .cart-item-controls button {
+            width: 24px;
+            height: 24px;
+            background: var(--light-bg);
+            border: 1px solid #cccccc;
+            cursor: pointer;
+        }
+
+        .remove-item {
+            color: #a40000;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-card {
+            position: relative;
+            width: min(700px, 100%);
+            max-height: 92vh;
+            overflow-y: auto;
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .modal-card h2 {
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .modal-card > p {
+            margin-bottom: 1.2rem;
+            color: #666666;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+            color: var(--charcoal);
+            background: transparent;
+            border: 0;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .form-group textarea {
+            min-height: 75px;
+            resize: vertical;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .payment-method {
+            display: block;
+            padding: 0.8rem;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .payment-method:has(input:checked) {
+            border-color: var(--gold);
+            box-shadow: inset 0 0 0 1px var(--gold);
+        }
+
+        .payment-method input {
+            margin-right: 0.35rem;
+        }
+
+        .payment-info {
+            display: none;
+            margin-bottom: 1rem;
+            padding: 0.9rem;
+            background: #fff9e8;
+            border: 1px solid #e9d99d;
+            border-radius: 4px;
+            color: #5d4a16;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .payment-info.active {
+            display: block;
+        }
+
+        .qr-placeholder {
+            display: grid;
+            place-items: center;
+            width: 130px;
+            height: 130px;
+            margin-top: 0.7rem;
+            color: #666666;
+            background: repeating-linear-gradient(45deg, #222 0, #222 5px, #fff 5px, #fff 10px);
+            border: 8px solid var(--white);
+            outline: 1px solid #cccccc;
+            font-weight: 700;
+        }
+
+        .qr-placeholder span {
+            padding: 0.8rem;
+            background: var(--white);
+        }
+
+        .order-total-box {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f7f7f7;
+            font-weight: 700;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .success-message h2 {
+            color: #176b37;
+        }
+
+        @media (max-width: 520px) {
+            .form-grid,
+            .payment-methods,
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .modal-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ADVIK JEWELLERS</h1>
+        <p> 1 GRAM GOLD JEWELLERY </p>
+    </header>
+
+    <div class="container">
+        <main>
+            <div class="products-grid">
+                <!-- PRODUCT 1 -->
+                <div class="product-card">
+                    <a href="necklace.jpg" target="_blank"><img src="necklace.jpg" alt="necklace.jpg" style="width:100%; height:200px; object-fit:cover;"></a>
+                    <h3>Gold Mangal Sutra</h3>
+                    <div class="product-price">₹3399 Flat 10% off </div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p1', 'necklace.jpg', 3399)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p1', 'necklace.jpg', 3399)">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCT 2 -->
+                <div class="product-card">
+                    <a href="neacklees set.jpg" target="_blank"><img src="neacklees set.jpg" alt="Necklace set" style="width:100%; height:200px; object-fit:contain;"></a>
+                    <h3>Necklace set</h3>
+                    <div class="product-price">₹2699 flat15%</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p2', 'Necklace set', 2699)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p2', 'Necklace set', 2699)">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCT 3 -->
+                <div class="product-card">
+                    <a href="mangal sutra.jpg" target="_blank"><img src="mangal sutra.jpg" alt="mangal sutra" style="width:100%; height:200px; object-fit:contain;"></a>
+                    <h3>Mangal Sutra</h3>
+                    <div class="product-price">₹2400 flat 30% off </div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p3', 'Mangal Sutra', 2400)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p3', 'Mangal Sutra', 2400)">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCT 4 -->
+                <div class="product-card">
+                    <a href="dimoand neck.jpg" target="_blank"><img src="dimoand neck.jpg" alt="diamond necklace" style="width:100%; height:200px; object-fit:contain;"></a>
+                    <h3>Diamond stone Necklace </h3>
+                    <div class="product-price">₹4299 Flat off 30% </div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p4', 'Diamond stone Necklace', 4299)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p4', 'Diamond stone Necklace', 4299)">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCT 5 -->
+                <div class="product-card">
+                    <a href="ring.jpg" target="_blank"><img src="https://unsplash.com" alt="Gold Ring" style="width:100%; height:200px; object-fit:contain; border-radius:8px;"></a>
+                    <h3>Designer Gold Ring</h3>
+                    <div class="product-price">₹1999 flat 15% off</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p5', 'Designer Gold Ring', 1999)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p5', 'Designer Gold Ring', 1999)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget-box">
+                <h2>Shopping Cart</h2>
+                <div id="cart-items-container">
+                    <p class="cart-empty">Your cart is empty</p>
+                </div>
+                <span class="cart-total" id="cart-total-display">Total: ₹0</span>
+            </div>
+
+            <div class="widget-box contact-info">
+                <h2>Contact Us</h2>
+                <p>📍 Advik Jewellers Shop, Main Market</p>
+                <p>📞 Call/WhatsApp us to place your order directly!</p>
+                <a href="https://wa.me" class="contact-link" target="_blank">💬 Order via WhatsApp</a>
+                <a href="tel:+919860976731" class="contact-link phone">📞 Call Now</a>
+            </div>
+        </aside>
+    </div>
+
+    <div class="modal" id="checkout-modal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeCheckout()" aria-label="Close checkout">×</button>
+            <h2>Place your order</h2>
+            <p>Enter your delivery address and choose a payment option.</p>
+
+            <form id="checkout-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="customer-name">Full name *</label>
+                        <input id="customer-name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email *</label>
+                        <input id="customer-email" type="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Phone number *</label>
+                        <input id="customer-phone" required placeholder="10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-pincode">Pincode *</label>
+                        <input id="customer-pincode" required placeholder="Pincode">
+                    </div>
+                    <div class="form-group full">
+                        <label for="customer-address">Complete address *</label>
+                        <textarea id="customer-address" required placeholder="House number, street, area"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-city">City *</label>
+                        <input id="customer-city" required placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-state">State *</label>
+                        <input id="customer-state" required placeholder="State">
+                    </div>
+                </div>
+
+                <h3 style="margin: 1.2rem 0 0.7rem;">Payment option</h3>
+
+                <div class="payment-methods">
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="upi" checked>
+                        UPI / QR
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="bank">
+                        Bank transfer
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="cod">
+                        Cash on delivery
+                    </label>
+                </div>
+
+                <div class="payment-info active" id="upi-info">
+                    <strong>UPI / QR payment</strong>
+                    <p>Replace the placeholder below with your own QR image later.</p>
+                    <p>UPI ID: <strong id="upi-id-text"></strong></p>
+                    <div class="qr-placeholder"><span>YOUR QR</span></div>
+                </div>
+
+                <div class="payment-info" id="bank-info">
+                    <strong>Bank transfer</strong>
+                    <p>Bank: <strong id="bank-name-text"></strong></p>
+                    <p>Account number: <strong id="account-number-text"></strong></p>
+                    <p>IFSC: <strong id="ifsc-text"></strong></p>
+                </div>
+
+                <div class="payment-info" id="cod-info">
+                    Cash on delivery selected. We will contact you before dispatch.
+                </div>
+
+                <div class="form-group">
+                    <label for="payment-reference">Payment reference, if available</label>
+                    <input id="payment-reference" placeholder="Optional transaction ID">
+                </div>
+
+                <div class="order-total-box">
+                    <span>Order total</span>
+                    <span id="checkout-total">₹0</span>
+                </div>
+
+                <button type="submit" class="btn-checkout">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="success-modal">
+        <div class="modal-card success-message">
+            <button class="close-modal" onclick="closeSuccess()" aria-label="Close confirmation">×</button>
+            <h2>Order placed successfully</h2>
+            <p>Thank you for shopping with Advik Jewellers.</p>
+            <p>Your order number is:</p>
+            <strong id="order-number" style="display:inline-block; margin:0.8rem 0; color:var(--dark-gold); font-size:1.2rem;"></strong>
+            <p>We will contact you soon to confirm your order and delivery.</p>
+            <button class="btn-checkout" onclick="closeSuccess()">Continue shopping</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Advik Jewellers. All Rights Reserved. Crafted for Premium 1 Gram Gold Luxury.</p>
+    </footer>
+
+    <!-- Store, checkout and order scripts -->
+    <script>
+        /*
+         * Replace these values later with your own UPI ID and bank details.
+         * For a public website, keep sensitive payment credentials on a server.
+         */
+        const PAYMENT_CONFIG = {
+            upiId: "sunitadalavi01sbi.com",
+            bankName: "STATE BANK OF INDIA",
+            accountNumber: "42146372222",
+            ifsc: "SBIN0000325"
+        };
+
+        let cart = JSON.parse(localStorage.getItem("advik-cart") || "[]");
+
+        function formatMoney(value) {
+            return new Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "INR",
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function saveCart() {
+            localStorage.setItem("advik-cart", JSON.stringify(cart));
+        }
+
+        function addToCart(id, name, price) {
+            const item = cart.find(product => product.id === id);
+
+            if (item) {
+                item.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartUI();
+        }
+
+        function buyNow(id, name, price) {
+            cart = [{ id, name, price, quantity: 1 }];
+            saveCart();
+            updateCartUI();
+            openCheckout();
+        }
+
+        function changeQuantity(id, amount) {
+            const item = cart.find(product => product.id === id);
+            if (!item) return;
+
+            item.quantity += amount;
+
+            if (item.quantity <= 0) {
+                cart = cart.filter(product => product.id !== id);
+            }
+
+            saveCart();
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(product => product.id !== id);
+            saveCart();
+            updateCartUI();
+        }
+
+        function getCartTotal() {
+            return cart.reduce((total, item) => {
+                return total + item.price * item.quantity;
+            }, 0);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById("cart-items-container");
+            const totalDisplay = document.getElementById("cart-total-display");
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+                totalDisplay.innerText = "Total: ₹0";
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <strong>${item.name}</strong>
+                        <div>${formatMoney(item.price)} each</div>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQuantity('${item.id}', -1)">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)">+</button>
+                        </div>
+                    </div>
+                    <strong>${formatMoney(item.price * item.quantity)}</strong>
+                    <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button>
+                </div>
+            `).join("");
+
+            totalDisplay.innerText = `Total: ${formatMoney(getCartTotal())}`;
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert("Please add a product to your cart first.");
+                return;
+            }
+
+            document.getElementById("checkout-total").innerText = formatMoney(getCartTotal());
+            document.getElementById("checkout-modal").classList.add("active");
+        }
+
+        function closeCheckout() {
+            document.getElementById("checkout-modal").classList.remove("active");
+        }
+
+        function closeSuccess() {
+            document.getElementById("success-modal").classList.remove("active");
+        }
+
+        function updatePaymentInfo() {
+            const method = document.querySelector('input[name="payment-method"]:checked').value;
+
+            document.getElementById("upi-info").classList.toggle("active", method === "upi");
+            document.getElementById("bank-info").classList.toggle("active", method === "bank");
+            document.getElementById("cod-info").classList.toggle("active", method === "cod");
+        }
+
+        document.querySelectorAll('input[name="payment-method"]').forEach(input => {
+            input.addEventListener("change", updatePaymentInfo);
+        });
+
+        document.getElementById("checkout-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const orderNumber = "ADV-" + new Date().getFullYear() + "-" +
+                Math.floor(10000 + Math.random() * 90000);
+
+            const order = {
+                orderNumber,
+                customer: {
+                    name: document.getElementById("customer-name").value,
+                    email: document.getElementById("customer-email").value,
+                    phone: document.getElementById("customer-phone").value,
+                    address: document.getElementById("customer-address").value,
+                    city: document.getElementById("customer-city").value,
+                    state: document.getElementById("customer-state").value,
+                    pincode: document.getElementById("customer-pincode").value
+                },
+                paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
+                paymentReference: document.getElementById("payment-reference").value,
+                products: cart,
+                total: getCartTotal(),
+                createdAt: new Date().toISOString()
+            };
+
+            localStorage.setItem("advik-last-order", JSON.stringify(order));
+            document.getElementById("order-number").innerText = orderNumber;
+
+            cart = [];
+            saveCart();
+            updateCartUI();
+            this.reset();
+            updatePaymentInfo();
+            closeCheckout();
+            document.getElementById("success-modal").classList.add("active");
+        });
+
+        document.getElementById("upi-id-text").innerText = PAYMENT_CONFIG.upiId;
+        document.getElementById("bank-name-text").innerText = PAYMENT_CONFIG.bankName;
+        document.getElementById("account-number-text").innerText = PAYMENT_CONFIG.accountNumber;
+        document.getElementById("ifsc-text").innerText = PAYMENT_CONFIG.ifsc;
+
+        updateCartUI();
+        updatePaymentInfo();
+    </script>
+</body>
+</html>

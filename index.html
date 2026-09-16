@@ -806,7 +806,8 @@
         </script>
 
 <!-- 1. Load Supabase via CDN -->
-<script src="https://jsdelivr.net"></script>
+    s').insert([
+              {<script src="https://jsdelivr.net"></script>
 
 <script>
   // 2. Connect to your database using credentials from your screen
@@ -817,8 +818,7 @@
   // 3. Define the database insertion function
   async function sendOrderToSupabase() {
       try {
-          await supabase.from('orders').insert([
-              {
+          await supabase.from('orde
                   product_name: cart.map(item => item.name).join(', ') || 'Jewellery Item', 
                   quantity: cart.reduce((total, item) => total + item.quantity, 0) || 1,
                   order_total: document.getElementById('total-price')?.innerText || '₹0', 

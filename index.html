@@ -811,14 +811,15 @@
 
 <script>
   // 2. Connect to your database using credentials from your screen
-  const SUPABASE_URL = 'https://supabase.co';
+  const SUPABASE_URL = 'NEXT_PUBLIC_SUPABASE_URL=https://mpxxrbqrlhlmmnxguvhm.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_LfLh-1_oEuurCl8U0uChBg_1d2tcuu3';
   const SUPABASE_ANON_KEY = 'sb_publishable_LftH-1_oEuuRCi8U0...';
   const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // 3. Define the database insertion function
   async function sendOrderToSupabase() {
       try {
-          await supabase.from('orde
+          await supabase.from('orders')
                   product_name: cart.map(item => item.name).join(', ') || 'Jewellery Item', 
                   quantity: cart.reduce((total, item) => total + item.quantity, 0) || 1,
                   order_total: document.getElementById('total-price')?.innerText || '₹0', 

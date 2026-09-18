@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advik Jewellers - 1 Gram Gold Jewellery</title>
+<meta name="google-site-verification" content="9j7APBgYMjQ5kG8jYRapTdAJXkZD-Syny4QS2YnTjcI" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --ivory: #FBF6EC;
+        --card: #FFFFFF;
+        --charcoal: #211C15;
+        --charcoal-soft: #55493A;
+        --line: #E7DFCC;
+        --gold: #B8912F;
+        --gold-light: #E4C874;
+        --gold-deep: #8C6A1D;
+        --maroon: #6E1423;
+        --maroon-deep: #4E0E19;
+        --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        background: var(--ivory);
+        color: var(--charcoal);
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 2rem;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--charcoal);
+        font-weight: 600;
+    }
+
+    a { color: inherit; }
+
+    button { font-family: inherit; }
+
+    /* ---------- Header ---------- */
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 90;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 1.1rem;
+        background: var(--charcoal);
+        border-bottom: 1px solid var(--gold-deep);
+    }
+
+    .brand h1 {
+        color: var(--gold-light);
+        font-size: clamp(1.4rem, 5vw, 1.9rem);
+        letter-spacing: 0.5px;
+        line-height: 1;
+    }
+
+    .brand p {
+        color: #C9BEA9;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        margin-top: 0.25rem;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-shrink: 0;
+    }
+
+    .auth-btn {
+        background: transparent;
+        color: var(--gold-light);
+        border: 1px solid var(--gold-deep);
+        border-radius: 999px;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .cart-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--charcoal-soft);
+        border: 1px solid var(--gold-deep);
+        color: var(--gold-light);
+        font-size: 1.25rem;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        min-width: 19px;
+        height: 19px;
+        padding: 0 4px;
+        border-radius: 999px;
+        background: var(--maroon);
+        color: var(--white);
+        font-size: 0.68rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--charcoal);
+    }
+
+    .cart-count.hidden { display: none; }
+
+    /* ---------- Intro strip ---------- */
+
+    .intro {
+        max-width: 1100px;
+        margin: 1.6rem auto 0.4rem;
+        padding: 0 1.1rem;
+    }
+
+    .intro h2 {
+        font-size: clamp(1.5rem, 4vw, 2.1rem);
+    }
+
+    .intro p {
+        color: var(--charcoal-soft);
+        font-size: 0.92rem;
+        margin-top: 0.3rem;
+        max-width: 46ch;
+    }
+
+    /* ---------- Product grid ---------- */
+
+    main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.2rem 1.1rem 2.5rem;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    @media (min-width: 620px) {
+        .products-grid { grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+    }
+
+    @media (min-width: 900px) {
+        .products-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .product-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-media {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        background: #F1EADA;
+        display: block;
+    }
+
+    .product-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .discount-tag {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background: var(--maroon);
+        color: var(--white);
+        font-size: 0.68rem;
+        font-weight: 600;
+        padding: 0.25rem 0.55rem;
+        border-radius: 999px;
+        letter-spacing: 0.2px;
+    }
+
+    .product-body {
+        padding: 0.75rem 0.75rem 0.9rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .product-body h3 {
+        font-size: 1.08rem;
+        line-height: 1.2;
+        margin-bottom: 0.15rem;
+    }
+
+    .product-price {
+        color: var(--gold-deep);
+        font-weight: 700;
+        font-size: 1.02rem;
+        margin-bottom: 0.65rem;
+    }
+
+    .product-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
+        margin-top: auto;
+    }
+
+    .btn-add, .btn-buy {
+        border: none;
+        border-radius: 6px;
+        padding: 0.55rem 0.3rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.2px;
+    }
+
+    .btn-add {
+        background: var(--ivory);
+        color: var(--charcoal);
+        border: 1px solid var(--charcoal);
+    }
+
+    .btn-buy {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
+
+    .btn-add:active, .btn-buy:active { transform: scale(0.97); }
+
+    /* ---------- Contact card ---------- */
+
+    .contact-card {
+        margin-top: 2.2rem;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1.3rem;
+    }
+
+    .contact-card h2 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+
+    .contact-card p {
+        font-size: 0.9rem;
+        color: var(--charcoal-soft);
+        margin-bottom: 0.6rem;
+        line-height: 1.4;
+    }
+
+    .contact-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin-top: 0.9rem;
+    }
+
+    .contact-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        text-decoration: none;
+        padding: 0.7rem;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-align: center;
+    }
+
+    .contact-link.whatsapp { background: #25D366; color: var(--white); }
+    .contact-link.phone { background: var(--charcoal); color: var(--gold-light); border: 1px solid var(--gold-deep); }
+
+    footer {
+        text-align: center;
+        padding: 1.6rem 1rem 0.5rem;
+        color: var(--charcoal-soft);
+        font-size: 0.78rem;
+    }
+
+    /* ---------- Cart drawer ---------- */
+
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 12, 8, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 150;
+    }
+
+    .overlay.active { opacity: 1; pointer-events: auto; }
+
+    .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: min(380px, 90vw);
+        background: var(--ivory);
+        z-index: 160;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.28s ease;
+        box-shadow: -6px 0 24px rgba(0,0,0,0.15);
+    }
+
+    .cart-drawer.active { transform: translateX(0); }
+
+    .cart-drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem;
+        background: var(--charcoal);
+        color: var(--gold-light);
+    }
+
+    .cart-drawer-header h2 { color: var(--gold-light); font-size: 1.3rem; }
+
+    .close-drawer {
+        background: transparent;
+        border: 0;
+        color: var(--gold-light);
+        font-size: 1.6rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    #cart-items-container {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1rem 1.1rem;
+    }
+
+    .cart-empty {
+        color: var(--charcoal-soft);
+        font-style: italic;
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .cart-item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.6rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item-info { flex: 1; }
+
+    .cart-item-info strong { font-size: 0.92rem; }
+
+    .cart-item-info div { font-size: 0.82rem; color: var(--charcoal-soft); margin-top: 0.15rem; }
+
+    .cart-item-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+    }
+
+    .cart-item-controls button {
+        width: 26px;
+        height: 26px;
+        border-radius: 5px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+
+    .cart-item-price { font-weight: 700; font-size: 0.92rem; white-space: nowrap; }
+
+    .remove-item {
+        color: var(--maroon);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 0.72rem;
+        margin-top: 0.3rem;
+        text-decoration: underline;
+    }
+
+    .cart-drawer-footer {
+        padding: 1rem 1.1rem 1.3rem;
+        border-top: 1px solid var(--line);
+        background: var(--card);
+    }
+
+    .cart-total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .btn-checkout {
+        display: block;
+        width: 100%;
+        padding: 0.85rem;
+        color: var(--white);
+        background: var(--maroon);
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .btn-checkout:active { background: var(--maroon-deep); }
+
+    /* ---------- Checkout / success modal ---------- */
+
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        align-items: flex-end;
+        justify-content: center;
+        background: rgba(15, 12, 8, 0.6);
+    }
+
+    .modal.active { display: flex; }
+
+    @media (min-width: 640px) {
+        .modal { align-items: center; }
+    }
+
+    .modal-card {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        max-height: 92vh;
+        overflow-y: auto;
+        background: var(--ivory);
+        border-radius: 16px 16px 0 0;
+        padding: 1.6rem 1.3rem;
+    }
+
+    @media (min-width: 640px) {
+        .modal-card { border-radius: 12px; padding: 2rem; }
+    }
+
+    .modal-card h2 { margin-bottom: 0.4rem; }
+
+    .modal-card > p.subtitle { margin-bottom: 1.1rem; color: var(--charcoal-soft); font-size: 0.9rem; }
+
+    .close-modal {
+        position: absolute;
+        top: 0.8rem;
+        right: 1rem;
+        color: var(--charcoal);
+        background: transparent;
+        border: 0;
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+
+    .form-group { margin-bottom: 0.8rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--charcoal-soft);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.7rem;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--white);
+        font-size: 0.95rem;
+        font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: 2px solid var(--gold);
+        outline-offset: 1px;
+    }
+
+    .form-group textarea { min-height: 75px; resize: vertical; }
+
+    .payment-methods {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .payment-method {
+        display: block;
+        padding: 0.7rem 0.4rem;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        text-align: center;
+        background: var(--white);
+    }
+
+    .payment-method:has(input:checked) {
+        border-color: var(--gold);
+        box-shadow: inset 0 0 0 1px var(--gold);
+        background: #FBF2D8;
+    }
+
+    .payment-method input { margin-right: 0.3rem; }
+
+    .auth-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .auth-tab {
+        flex: 1;
+        background: transparent;
+        border: 0;
+        padding: 0.7rem 0.4rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--charcoal-soft);
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+    }
+
+    .auth-tab.active {
+        color: var(--maroon);
+        border-bottom-color: var(--maroon);
+    }
+
+    .auth-view { display: none; }
+    .auth-view.active { display: block; }
+
+    .auth-error {
+        background: #FBE8E8;
+        border: 1px solid #E3A5A5;
+        color: #7A1F1F;
+        padding: 0.65rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .auth-success {
+        background: #E8F5EC;
+        border: 1px solid #A8D7B6;
+        color: #176B37;
+        padding: 0.65rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .link-btn {
+        display: block;
+        margin: 0.8rem auto 0;
+        background: transparent;
+        border: 0;
+        color: var(--gold-deep);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .order-history-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.85rem 1rem;
+        margin-bottom: 0.8rem;
+        background: var(--card);
+    }
+
+    .order-history-item .order-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .order-history-item .order-date {
+        font-size: 0.78rem;
+        color: var(--charcoal-soft);
+    }
+
+    .order-history-item .order-products {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .order-history-item .order-meta {
+        font-size: 0.78rem;
+        color: var(--charcoal-soft);
+    }
+
+    .order-history-item .order-amount {
+        font-weight: 700;
+        color: var(--gold-deep);
+    }
+
+    .saved-address-item {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.7rem 0.85rem;
+        margin-bottom: 0.55rem;
+        background: var(--white);
+        cursor: pointer;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        color: var(--charcoal-soft);
+    }
+
+    .saved-address-item.selected {
+        border-color: var(--gold);
+        box-shadow: inset 0 0 0 1px var(--gold);
+        background: #FBF2D8;
+        color: var(--charcoal);
+    }
+
+    .payment-info {
+        display: none;
+        margin-bottom: 1rem;
+        padding: 0.9rem;
+        background: #FBF2D8;
+        border: 1px solid var(--gold-light);
+        border-radius: 6px;
+        color: var(--gold-deep);
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .payment-info.active { display: block; }
+
+    .qr-placeholder {
+        display: grid;
+        place-items: center;
+        width: 120px;
+        height: 120px;
+        margin-top: 0.7rem;
+        color: var(--charcoal-soft);
+        background: repeating-linear-gradient(45deg, #222 0, #222 5px, #fff 5px, #fff 10px);
+        border: 8px solid var(--white);
+        outline: 1px solid var(--line);
+        font-weight: 700;
+    }
+
+    .qr-placeholder span { padding: 0.7rem; background: var(--white); font-size: 0.75rem; }
+
+    .order-total-box {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+        padding: 1rem;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        font-weight: 700;
+    }
+
+    .success-message { text-align: center; padding: 1rem 0; }
+    .success-message h2 { color: #176B37; }
+
+    @media (max-width: 420px) {
+        .form-grid, .payment-methods { grid-template-columns: 1fr; }
+        .form-group.full { grid-column: auto; }
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <h1>Advik Jewellers</h1>
+            <p>1 GRAM GOLD JEWELLERY</p>
+        </div>
+        <div class="header-actions">
+            <button class="auth-btn" id="orders-btn" style="display:none;" onclick="openOrderHistory()">Orders</button>
+            <button class="auth-btn" id="auth-btn" onclick="openAuth('login')">Login</button>
+            <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+                🛍️
+                <span class="cart-count hidden" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="intro">
+        <h2>Our Collection</h2>
+        <p>Everyday festive pieces in 1 gram gold — light on the pocket, rich in look.</p>
+    </div>
+
+    <main>
+        <div class="products-grid">
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+                <a class="product-media" href="necklace.jpg" target="_blank">
+                    <span class="discount-tag">10% OFF</span>
+                    <img src="necklace.jpg" alt="Gold Mangal Sutra">
+                </a>
+                <div class="product-body">
+                    <h3>Gold Mangal Sutra</h3>
+                    <div class="product-price">₹3,399</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p1', 'Gold Mangal Sutra', 3399)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p1', 'Gold Mangal Sutra', 3399)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+                <a class="product-media" href="neacklees set.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="neacklees set.jpg" alt="Necklace set">
+                </a>
+                <div class="product-body">
+                    <h3>Necklace Set</h3>
+                    <div class="product-price">₹2,699</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p2', 'Necklace Set', 2699)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p2', 'Necklace Set', 2699)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card">
+                <a class="product-media" href="mangal sutra.jpg" target="_blank">
+                    <span class="discount-tag">30% OFF</span>
+                    <img src="mangal sutra.jpg" alt="Mangal Sutra">
+                </a>
+                <div class="product-body">
+                    <h3>Mangal Sutra</h3>
+                    <div class="product-price">₹2,400</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p3', 'Mangal Sutra', 2400)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p3', 'Mangal Sutra', 2400)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card">
+                <a class="product-media" href="dimoand neck.jpg" target="_blank">
+                    <span class="discount-tag">30% OFF</span>
+                    <img src="dimoand neck.jpg" alt="Diamond stone Necklace">
+                </a>
+                <div class="product-body">
+                    <h3>Diamond Stone Necklace</h3>
+                    <div class="product-price">₹4,299</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p4', 'Diamond Stone Necklace', 4299)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p4', 'Diamond Stone Necklace', 4299)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 5 -->
+            <div class="product-card">
+                <a class="product-media" href="ring.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="ring.jpg" alt="Designer Gold Ring">
+                </a>
+                <div class="product-body">
+                    <h3>Designer Gold Ring</h3>
+                    <div class="product-price">₹1,999</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p5', 'Designer Gold Ring', 1999)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p5', 'Designer Gold Ring', 1999)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 6 -->
+            <div class="product-card">
+                <a class="product-media" href="product6.jpg" target="_blank">
+                    <span class="discount-tag">10% OFF</span>
+                    <img src="product6.jpg" alt="Gold Bangles Pair">
+                </a>
+                <div class="product-body">
+                    <h3>Gold Bangles Pair</h3>
+                    <div class="product-price">₹2,199</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p6', 'Gold Bangles Pair', 2199)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p6', 'Gold Bangles Pair', 2199)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 7 -->
+            <div class="product-card">
+                <a class="product-media" href="product7.jpg" target="_blank">
+                    <span class="discount-tag">20% OFF</span>
+                    <img src="product7.jpg" alt="Jhumka Earrings">
+                </a>
+                <div class="product-body">
+                    <h3>Jhumka Earrings</h3>
+                    <div class="product-price">₹1,499</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p7', 'Jhumka Earrings', 1499)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p7', 'Jhumka Earrings', 1499)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 8 -->
+            <div class="product-card">
+                <a class="product-media" href="product8.jpg" target="_blank">
+                    <span class="discount-tag">25% OFF</span>
+                    <img src="product8.jpg" alt="Gold Chain">
+                </a>
+                <div class="product-body">
+                    <h3>Gold Chain</h3>
+                    <div class="product-price">₹2,899</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p8', 'Gold Chain', 2899)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p8', 'Gold Chain', 2899)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 9 -->
+            <div class="product-card">
+                <a class="product-media" href="product9.jpg" target="_blank">
+                    <span class="discount-tag">10% OFF</span>
+                    <img src="product9.jpg" alt="Anklet Pair">
+                </a>
+                <div class="product-body">
+                    <h3>Anklet Pair</h3>
+                    <div class="product-price">₹1,299</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p9', 'Anklet Pair', 1299)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p9', 'Anklet Pair', 1299)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 10 -->
+            <div class="product-card">
+                <a class="product-media" href="product10.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="product10.jpg" alt="Gold Bracelet">
+                </a>
+                <div class="product-body">
+                    <h3>Gold Bracelet</h3>
+                    <div class="product-price">₹1,799</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p10', 'Gold Bracelet', 1799)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p10', 'Gold Bracelet', 1799)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 11 -->
+            <div class="product-card">
+                <a class="product-media" href="product11.jpg" target="_blank">
+                    <span class="discount-tag">20% OFF</span>
+                    <img src="product11.jpg" alt="Pendant Set">
+                </a>
+                <div class="product-body">
+                    <h3>Pendant Set</h3>
+                    <div class="product-price">₹2,099</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p11', 'Pendant Set', 2099)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p11', 'Pendant Set', 2099)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 12 -->
+            <div class="product-card">
+                <a class="product-media" href="product12.jpg" target="_blank">
+                    <span class="discount-tag">30% OFF</span>
+                    <img src="product12.jpg" alt="Nose Pin">
+                </a>
+                <div class="product-body">
+                    <h3>Nose Pin</h3>
+                    <div class="product-price">₹599</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p12', 'Nose Pin', 599)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p12', 'Nose Pin', 599)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 13 -->
+            <div class="product-card">
+                <a class="product-media" href="product13.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="product13.jpg" alt="Bridal Choker">
+                </a>
+                <div class="product-body">
+                    <h3>Bridal Choker</h3>
+                    <div class="product-price">₹4,999</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p13', 'Bridal Choker', 4999)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p13', 'Bridal Choker', 4999)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 14 -->
+            <div class="product-card">
+                <a class="product-media" href="product14.jpg" target="_blank">
+                    <span class="discount-tag">10% OFF</span>
+                    <img src="product14.jpg" alt="Waist Chain">
+                </a>
+                <div class="product-body">
+                    <h3>Waist Chain</h3>
+                    <div class="product-price">₹1,899</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p14', 'Waist Chain', 1899)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p14', 'Waist Chain', 1899)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 15 -->
+            <div class="product-card">
+                <a class="product-media" href="product15.jpg" target="_blank">
+                    <span class="discount-tag">20% OFF</span>
+                    <img src="product15.jpg" alt="Toe Ring Pair">
+                </a>
+                <div class="product-body">
+                    <h3>Toe Ring Pair</h3>
+                    <div class="product-price">₹799</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p15', 'Toe Ring Pair', 799)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p15', 'Toe Ring Pair', 799)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 16 -->
+            <div class="product-card">
+                <a class="product-media" href="product16.jpg" target="_blank">
+                    <span class="discount-tag">25% OFF</span>
+                    <img src="product16.jpg" alt="Long Haram">
+                </a>
+                <div class="product-body">
+                    <h3>Long Haram</h3>
+                    <div class="product-price">₹5,499</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p16', 'Long Haram', 5499)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p16', 'Long Haram', 5499)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 17 -->
+            <div class="product-card">
+                <a class="product-media" href="product17.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="product17.jpg" alt="Vanki Armlet">
+                </a>
+                <div class="product-body">
+                    <h3>Vanki Armlet</h3>
+                    <div class="product-price">₹1,599</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p17', 'Vanki Armlet', 1599)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p17', 'Vanki Armlet', 1599)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 18 -->
+            <div class="product-card">
+                <a class="product-media" href="product18.jpg" target="_blank">
+                    <span class="discount-tag">10% OFF</span>
+                    <img src="product18.jpg" alt="Kada Bangle">
+                </a>
+                <div class="product-body">
+                    <h3>Kada Bangle</h3>
+                    <div class="product-price">₹2,499</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p18', 'Kada Bangle', 2499)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p18', 'Kada Bangle', 2499)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 19 -->
+            <div class="product-card">
+                <a class="product-media" href="product19.jpg" target="_blank">
+                    <span class="discount-tag">20% OFF</span>
+                    <img src="product19.jpg" alt="Maang Tikka">
+                </a>
+                <div class="product-body">
+                    <h3>Maang Tikka</h3>
+                    <div class="product-price">₹1,199</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p19', 'Maang Tikka', 1199)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p19', 'Maang Tikka', 1199)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 20 -->
+            <div class="product-card">
+                <a class="product-media" href="product20.jpg" target="_blank">
+                    <span class="discount-tag">15% OFF</span>
+                    <img src="product20.jpg" alt="Stud Earrings">
+                </a>
+                <div class="product-body">
+                    <h3>Stud Earrings</h3>
+                    <div class="product-price">₹999</div>
+                    <div class="product-actions">
+                        <button class="btn-add" onclick="addToCart('p20', 'Stud Earrings', 999)">Add to Cart</button>
+                        <button class="btn-buy" onclick="buyNow('p20', 'Stud Earrings', 999)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <h2>Contact Us</h2>
+            <p>📍 Advik Jewellers Shop,Barshikar</p>
+            <p>📞 Call or WhatsApp us to place your order directly.</p>
+            <div class="contact-links">
+                <a href="https://wa.me/919860976731" class="contact-link whatsapp" target="_blank">💬 WhatsApp</a>
+                <a href="tel:+919860976731" class="contact-link phone">📞 Call Now</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Advik Jewellers. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Cart drawer -->
+    <div class="overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-drawer" onclick="closeCart()" aria-label="Close cart">×</button>
+        </div>
+        <div id="cart-items-container">
+            <p class="cart-empty">Your cart is empty</p>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total"><span>Total</span><span id="cart-total-display">₹0</span></div>
+            <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Auth modal: login / register / forgot password -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeAuth()" aria-label="Close">×</button>
+
+            <div class="auth-tabs" id="auth-tabs">
+                <button type="button" class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Log In</button>
+                <button type="button" class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <div id="auth-error" class="auth-error" style="display:none;"></div>
+            <div id="auth-success" class="auth-success" style="display:none;"></div>
+
+            <!-- LOGIN -->
+            <form id="login-form" class="auth-view active">
+                <div class="form-group full">
+                    <label for="login-email">Email *</label>
+                    <input id="login-email" type="email" required autocomplete="email">
+                </div>
+                <div class="form-group full">
+                    <label for="login-password">Password *</label>
+                    <input id="login-password" type="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-checkout">Log In</button>
+                <button type="button" class="link-btn" onclick="switchAuthTab('forgot')">Forgot password?</button>
+            </form>
+
+            <!-- REGISTER -->
+            <form id="register-form" class="auth-view">
+                <div class="form-group full">
+                    <label for="register-name">Full name *</label>
+                    <input id="register-name" required autocomplete="name">
+                </div>
+                <div class="form-group full">
+                    <label for="register-email">Email *</label>
+                    <input id="register-email" type="email" required autocomplete="email">
+                </div>
+                <div class="form-group full">
+                    <label for="register-password">Password * (min 6 characters)</label>
+                    <input id="register-password" type="password" required minlength="6" autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn-checkout">Create Account</button>
+            </form>
+
+            <!-- FORGOT PASSWORD -->
+            <div id="forgot-view" class="auth-view">
+                <form id="forgot-request-form">
+                    <p class="subtitle">Enter your email and we'll send you a one-time code.</p>
+                    <div class="form-group full">
+                        <label for="forgot-email">Email *</label>
+                        <input id="forgot-email" type="email" required autocomplete="email">
+                    </div>
+                    <button type="submit" class="btn-checkout">Send OTP</button>
+                </form>
+
+                <form id="forgot-reset-form" style="display:none; margin-top:1rem;">
+                    <p class="subtitle">Enter the code we emailed you and set a new password.</p>
+                    <div class="form-group full">
+                        <label for="forgot-otp">OTP code *</label>
+                        <input id="forgot-otp" required autocomplete="one-time-code">
+                    </div>
+                    <div class="form-group full">
+                        <label for="forgot-new-password">New password * (min 6 characters)</label>
+                        <input id="forgot-new-password" type="password" required minlength="6" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn-checkout">Reset Password</button>
+                </form>
+
+                <button type="button" class="link-btn" onclick="switchAuthTab('login')">Back to Log In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order history modal -->
+    <div class="modal" id="orders-modal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeOrderHistory()" aria-label="Close">×</button>
+            <h2>Your Orders</h2>
+            <p class="subtitle">Orders placed with this account.</p>
+            <div id="orders-list">
+                <p class="cart-empty">Loading your orders…</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeCheckout()" aria-label="Close checkout">×</button>
+            <h2>Place your order</h2>
+            <p class="subtitle">Enter your delivery address and choose a payment option.</p>
+
+            <form id="checkout-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="customer-name">Full name *</label>
+                        <input id="customer-name" required placeholder="Your full name" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email *</label>
+                        <input id="customer-email" type="email" required placeholder="you@example.com" autocomplete="email">
+                    </div>
+                    <div class="form-group full">
+                        <label for="customer-phone">Phone number *</label>
+                        <input id="customer-phone" type="tel" required placeholder="10-digit mobile number" autocomplete="tel">
+                    </div>
+                </div>
+
+                <div id="saved-addresses-block" style="display:none;">
+                    <label style="display:block; margin: 0.6rem 0 0.5rem; font-size: 0.82rem; font-weight: 700; color: var(--charcoal-soft);">Delivery address</label>
+                    <div id="saved-addresses-list"></div>
+                    <button type="button" class="link-btn" id="add-new-address-btn" onclick="showNewAddressForm()" style="margin: 0.2rem 0 1rem;">+ Add a new address</button>
+                </div>
+
+                <div id="address-fields" class="form-grid">
+                    <div class="form-group full">
+                        <label for="customer-address">Complete address *</label>
+                        <textarea id="customer-address" required placeholder="House number, street, area" autocomplete="street-address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-city">City *</label>
+                        <input id="customer-city" required placeholder="City" autocomplete="address-level2">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-state">State *</label>
+                        <input id="customer-state" required placeholder="State" autocomplete="address-level1">
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-pincode">Pincode *</label>
+                        <input id="customer-pincode" required placeholder="Pincode" autocomplete="postal-code">
+                    </div>
+                    <div class="form-group full" id="save-address-option">
+                        <label style="display:flex; align-items:center; gap:0.4rem; font-weight:500;">
+                            <input type="checkbox" id="save-address-checkbox" checked style="width:auto;">
+                            Save this address for next time
+                        </label>
+                    </div>
+                </div>
+
+                <h3 style="margin: 1rem 0 0.7rem; font-size: 1.15rem;">Payment option</h3>
+
+                <div class="payment-methods">
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="upi" checked>
+                        UPI / QR
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="bank">
+                        Bank transfer
+                    </label>
+                    <label class="payment-method">
+                        <input type="radio" name="payment-method" value="cod">
+                        Cash on delivery
+                    </label>
+                </div>
+
+                <div class="payment-info active" id="upi-info">
+                    <strong>UPI / QR payment</strong>
+                    <p>Replace the placeholder below with your own QR image later.</p>
+                    <p>UPI ID: <strong id="upi-id-text"></strong></p>
+                    <div class="qr-placeholder"><span>YOUR QR</span></div>
+                </div>
+
+                <div class="payment-info" id="bank-info">
+                    <strong>Bank transfer</strong>
+                    <p>Bank: <strong id="bank-name-text"></strong></p>
+                    <p>Account number: <strong id="account-number-text"></strong></p>
+                    <p>IFSC: <strong id="ifsc-text"></strong></p>
+                </div>
+
+                <div class="payment-info" id="cod-info">
+                    Cash on delivery selected. We will contact you before dispatch.
+                </div>
+
+                <div class="form-group">
+                    <label for="payment-reference">Payment reference, if available</label>
+                    <input id="payment-reference" placeholder="Optional transaction ID">
+                </div>
+
+                <div class="order-total-box">
+                    <span>Order total</span>
+                    <span id="checkout-total">₹0</span>
+                </div>
+
+                <button type="submit" class="btn-checkout">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-card success-message">
+            <button class="close-modal" onclick="closeSuccess()" aria-label="Close confirmation">×</button>
+            <h2>Order placed successfully</h2>
+            <p>Thank you for shopping with Advik Jewellers.</p>
+            <p>Your order number is:</p>
+            <strong id="order-number" style="display:inline-block; margin:0.8rem 0; color:var(--gold-deep); font-size:1.2rem;"></strong>
+            <p>We will contact you soon to confirm your order and delivery.</p>
+            <button class="btn-checkout" onclick="closeSuccess()" style="margin-top:1rem;">Continue shopping</button>
+        </div>
+    </div>
+
+    <!-- Store, cart, checkout and order scripts -->
+    <script>
+        /*
+         * Replace these values later with your own UPI ID and bank details.
+         * For a public website, keep sensitive payment credentials on a server
+         * rather than hard-coded in client-side JS.
+         */
+        const PAYMENT_CONFIG = {
+            upiId: "sunitadalavi01@sbi",
+            bankName: "STATE BANK OF INDIA",
+            accountNumber: "42146372222",
+            ifsc: "SBIN0000325"
+        };
+
+        let cart = JSON.parse(localStorage.getItem("advik-cart") || "[]");
+
+        function formatMoney(value) {
+            return new Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "INR",
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function saveCart() {
+            localStorage.setItem("advik-cart", JSON.stringify(cart));
+        }
+
+        function addToCart(id, name, price) {
+            const item = cart.find(product => product.id === id);
+            if (item) {
+                item.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            saveCart();
+            updateCartUI();
+            openCart();
+        }
+
+        function buyNow(id, name, price) {
+            cart = [{ id, name, price, quantity: 1 }];
+            saveCart();
+            updateCartUI();
+            openCheckout();
+        }
+
+        function changeQuantity(id, amount) {
+            const item = cart.find(product => product.id === id);
+            if (!item) return;
+            item.quantity += amount;
+            if (item.quantity <= 0) {
+                cart = cart.filter(product => product.id !== id);
+            }
+            saveCart();
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(product => product.id !== id);
+            saveCart();
+            updateCartUI();
+        }
+
+        function getCartTotal() {
+            return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        }
+
+        function getCartCount() {
+            return cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById("cart-items-container");
+            const totalDisplay = document.getElementById("cart-total-display");
+            const countBadge = document.getElementById("cart-count");
+
+            const count = getCartCount();
+            countBadge.innerText = count;
+            countBadge.classList.toggle("hidden", count === 0);
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="cart-empty">Your cart is empty</p>';
+                totalDisplay.innerText = formatMoney(0);
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <strong>${item.name}</strong>
+                        <div>${formatMoney(item.price)} each</div>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQuantity('${item.id}', -1)">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button>
+                    </div>
+                    <div class="cart-item-price">${formatMoney(item.price * item.quantity)}</div>
+                </div>
+            `).join("");
+
+            totalDisplay.innerText = formatMoney(getCartTotal());
+        }
+
+        function openCart() {
+            document.getElementById("cart-drawer").classList.add("active");
+            document.getElementById("cart-overlay").classList.add("active");
+        }
+
+        function closeCart() {
+            document.getElementById("cart-drawer").classList.remove("active");
+            document.getElementById("cart-overlay").classList.remove("active");
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert("Please add a product to your cart first.");
+                return;
+            }
+            if (!currentUser) {
+                pendingCheckoutAfterAuth = true;
+                closeCart();
+                openAuth("login");
+                return;
+            }
+            closeCart();
+            if (currentUser) {
+                const nameField = document.getElementById("customer-name");
+                const emailField = document.getElementById("customer-email");
+                if (!nameField.value) nameField.value = currentUser.user_metadata?.full_name || "";
+                if (!emailField.value) emailField.value = currentUser.email || "";
+                loadSavedAddresses();
+            }
+            document.getElementById("checkout-total").innerText = formatMoney(getCartTotal());
+            document.getElementById("checkout-modal").classList.add("active");
+        }
+
+        function closeCheckout() {
+            document.getElementById("checkout-modal").classList.remove("active");
+        }
+
+        function closeSuccess() {
+            document.getElementById("success-modal").classList.remove("active");
+        }
+
+        function updatePaymentInfo() {
+            const method = document.querySelector('input[name="payment-method"]:checked').value;
+            document.getElementById("upi-info").classList.toggle("active", method === "upi");
+            document.getElementById("bank-info").classList.toggle("active", method === "bank");
+            document.getElementById("cod-info").classList.toggle("active", method === "cod");
+        }
+
+        document.querySelectorAll('input[name="payment-method"]').forEach(input => {
+            input.addEventListener("change", updatePaymentInfo);
+        });
+
+        document.getElementById("checkout-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const orderNumber = "ADV-" + new Date().getFullYear() + "-" +
+                Math.floor(10000 + Math.random() * 90000);
+
+            const order = {
+                orderNumber,
+                customer: {
+                    name: document.getElementById("customer-name").value,
+                    email: document.getElementById("customer-email").value,
+                    phone: document.getElementById("customer-phone").value,
+                    address: document.getElementById("customer-address").value,
+                    city: document.getElementById("customer-city").value,
+                    state: document.getElementById("customer-state").value,
+                    pincode: document.getElementById("customer-pincode").value
+                },
+                paymentMethod: document.querySelector('input[name="payment-method"]:checked').value,
+                paymentReference: document.getElementById("payment-reference").value,
+                products: cart,
+                total: getCartTotal(),
+                createdAt: new Date().toISOString()
+            };
+
+            localStorage.setItem("advik-last-order", JSON.stringify(order));
+            document.getElementById("order-number").innerText = orderNumber;
+
+            sendOrderToSupabase(order);
+            saveNewAddressIfNeeded(order.customer);
+
+            cart = [];
+            saveCart();
+            updateCartUI();
+            this.reset();
+            updatePaymentInfo();
+            resetAddressForm();
+            closeCheckout();
+            document.getElementById("success-modal").classList.add("active");
+        });
+
+        document.getElementById("upi-id-text").innerText = PAYMENT_CONFIG.upiId;
+        document.getElementById("bank-name-text").innerText = PAYMENT_CONFIG.bankName;
+        document.getElementById("account-number-text").innerText = PAYMENT_CONFIG.accountNumber;
+        document.getElementById("ifsc-text").innerText = PAYMENT_CONFIG.ifsc;
+
+        updateCartUI();
+        updatePaymentInfo();
+    </script>
+
+    <!-- Optional: save each order to Supabase. Double-check SUPABASE_URL and
+         SUPABASE_ANON_KEY against your own project settings before relying on this. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://mpxxrbqrlhlmmnxguvhm.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_LfLh-1_oEuurCl8U0uChBg_1d2tcuu3';
+        const supabaseClient = window.supabase
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+
+        async function sendOrderToSupabase(order) {
+            if (!supabaseClient) return;
+            try {
+                await supabaseClient.from('orders').insert([{
+                    product_name: order.products.map(item => item.name).join(', ') || 'Jewellery Item',
+                    quantity: order.products.reduce((total, item) => total + item.quantity, 0) || 1,
+                    order_total: order.total,
+                    customer_name: order.customer.name || 'N/A',
+                    customer_email: order.customer.email || 'N/A',
+                    customer_phone: order.customer.phone || 'N/A',
+                    delivery_pincode: order.customer.pincode || 'N/A',
+                    delivery_address: order.customer.address || 'N/A',
+                    delivery_city: order.customer.city || 'N/A',
+                    delivery_state: order.customer.state || 'N/A',
+                    payment_method: order.paymentMethod || 'N/A',
+                    transaction_id: order.paymentReference || 'N/A'
+                }]);
+            } catch (err) {
+                console.error("Database save failed:", err);
+            }
+        }
+
+        /* ---------------- Login / Register / Forgot password ----------------
+         * Uses Supabase Auth. Requires Auth to be enabled on your Supabase
+         * project (it is by default). "Forgot password" uses Supabase's OTP
+         * recovery flow: resetPasswordForEmail() sends the email, and
+         * verifyOtp() checks the code the user types back in. For the email
+         * to show a numeric code (instead of a link), open your Supabase
+         * project > Authentication > Email Templates > Reset Password, and
+         * make sure the template includes {{ .Token }}.
+         * No order can be placed until currentUser is set (see openCheckout).
+         */
+
+        let currentUser = null;
+        let pendingCheckoutAfterAuth = false;
+
+        async function initAuth() {
+            if (!supabaseClient) return;
+            const { data } = await supabaseClient.auth.getSession();
+            currentUser = data.session ? data.session.user : null;
+            updateAuthUI();
+            supabaseClient.auth.onAuthStateChange((_event, session) => {
+                currentUser = session ? session.user : null;
+                updateAuthUI();
+            });
+        }
+
+        function updateAuthUI() {
+            const btn = document.getElementById("auth-btn");
+            const ordersBtn = document.getElementById("orders-btn");
+            if (currentUser) {
+                btn.innerText = currentUser.user_metadata?.full_name
+                    ? currentUser.user_metadata.full_name.split(" ")[0]
+                    : currentUser.email.split("@")[0];
+                btn.onclick = handleLogout;
+                ordersBtn.style.display = "inline-block";
+            } else {
+                btn.innerText = "Login";
+                btn.onclick = () => openAuth("login");
+                ordersBtn.style.display = "none";
+            }
+        }
+
+        function handleLogout() {
+            if (!supabaseClient) return;
+            if (confirm("Log out of your account?")) {
+                supabaseClient.auth.signOut();
+            }
+        }
+
+        function openAuth(tab) {
+            document.getElementById("auth-modal").classList.add("active");
+            switchAuthTab(tab || "login");
+        }
+
+        function closeAuth() {
+            document.getElementById("auth-modal").classList.remove("active");
+            pendingCheckoutAfterAuth = false;
+        }
+
+        function clearAuthMessages() {
+            document.getElementById("auth-error").style.display = "none";
+            document.getElementById("auth-success").style.display = "none";
+        }
+
+        function showAuthError(message) {
+            clearAuthMessages();
+            const el = document.getElementById("auth-error");
+            el.innerText = message;
+            el.style.display = "block";
+        }
+
+        function showAuthSuccess(message) {
+            clearAuthMessages();
+            const el = document.getElementById("auth-success");
+            el.innerText = message;
+            el.style.display = "block";
+        }
+
+        function switchAuthTab(tab) {
+            clearAuthMessages();
+
+            document.querySelectorAll(".auth-tab").forEach(t => {
+                t.classList.toggle("active", t.dataset.tab === tab);
+            });
+
+            const tabsBar = document.getElementById("auth-tabs");
+            tabsBar.style.display = tab === "forgot" ? "none" : "flex";
+
+            document.getElementById("login-form").classList.toggle("active", tab === "login");
+            document.getElementById("register-form").classList.toggle("active", tab === "register");
+            document.getElementById("forgot-view").classList.toggle("active", tab === "forgot");
+
+            if (tab === "forgot") {
+                document.getElementById("forgot-request-form").style.display = "block";
+                document.getElementById("forgot-reset-form").style.display = "none";
+            }
+        }
+
+        document.getElementById("login-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!supabaseClient) { showAuthError("Login is not set up yet."); return; }
+
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+            if (error) { showAuthError(error.message); return; }
+
+            currentUser = data.user;
+            updateAuthUI();
+            closeAuth();
+            document.getElementById("login-form").reset();
+
+            if (pendingCheckoutAfterAuth) {
+                pendingCheckoutAfterAuth = false;
+                openCheckout();
+            }
+        });
+
+        document.getElementById("register-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!supabaseClient) { showAuthError("Registration is not set up yet."); return; }
+
+            const name = document.getElementById("register-name").value;
+            const email = document.getElementById("register-email").value;
+            const password = document.getElementById("register-password").value;
+
+            const { data, error } = await supabaseClient.auth.signUp({
+                email,
+                password,
+                options: { data: { full_name: name } }
+            });
+            if (error) { showAuthError(error.message); return; }
+
+            if (data.session) {
+                currentUser = data.user;
+                updateAuthUI();
+                closeAuth();
+                document.getElementById("register-form").reset();
+                if (pendingCheckoutAfterAuth) {
+                    pendingCheckoutAfterAuth = false;
+                    openCheckout();
+                }
+            } else {
+                showAuthSuccess("Account created. Check your email to confirm it, then log in.");
+                document.getElementById("register-form").reset();
+            }
+        });
+
+        document.getElementById("forgot-request-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!supabaseClient) { showAuthError("This isn't set up yet."); return; }
+
+            const email = document.getElementById("forgot-email").value;
+            const { error } = await supabaseClient.auth.resetPasswordForEmail(email);
+            if (error) { showAuthError(error.message); return; }
+
+            showAuthSuccess("We've emailed you a one-time code.");
+            document.getElementById("forgot-reset-form").style.display = "block";
+        });
+
+        document.getElementById("forgot-reset-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            if (!supabaseClient) { showAuthError("This isn't set up yet."); return; }
+
+            const email = document.getElementById("forgot-email").value;
+            const token = document.getElementById("forgot-otp").value;
+            const newPassword = document.getElementById("forgot-new-password").value;
+
+            const { error: verifyError } = await supabaseClient.auth.verifyOtp({
+                email, token, type: "recovery"
+            });
+            if (verifyError) { showAuthError(verifyError.message); return; }
+
+            const { error: updateError } = await supabaseClient.auth.updateUser({ password: newPassword });
+            if (updateError) { showAuthError(updateError.message); return; }
+
+            showAuthSuccess("Password updated. You're logged in.");
+            document.getElementById("forgot-request-form").reset();
+            document.getElementById("forgot-reset-form").reset();
+            document.getElementById("forgot-reset-form").style.display = "none";
+
+            setTimeout(() => {
+                closeAuth();
+                if (pendingCheckoutAfterAuth) {
+                    pendingCheckoutAfterAuth = false;
+                    openCheckout();
+                }
+            }, 1200);
+        });
+
+        initAuth();
+
+        /* ---------------- Order history ----------------
+         * Looks up past orders by matching customer_email to the logged-in
+         * user's email. Assumes the 'orders' table has Supabase's default
+         * id/created_at columns; if your table doesn't have created_at,
+         * remove the .order('created_at', ...) line below.
+         */
+
+        function openOrderHistory() {
+            document.getElementById("orders-modal").classList.add("active");
+            loadOrderHistory();
+        }
+
+        function closeOrderHistory() {
+            document.getElementById("orders-modal").classList.remove("active");
+        }
+
+        async function loadOrderHistory() {
+            const list = document.getElementById("orders-list");
+            list.innerHTML = '<p class="cart-empty">Loading your orders…</p>';
+
+            if (!supabaseClient || !currentUser) {
+                list.innerHTML = '<p class="cart-empty">Please log in to see your orders.</p>';
+                return;
+            }
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('orders')
+                    .select('*')
+                    .eq('customer_email', currentUser.email)
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    list.innerHTML = '<p class="cart-empty">You haven\'t placed any orders yet.</p>';
+                    return;
+                }
+
+                list.innerHTML = data.map(order => {
+                    const date = order.created_at
+                        ? new Date(order.created_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+                        : "";
+                    const amount = typeof order.order_total === "number"
+                        ? formatMoney(order.order_total)
+                        : (order.order_total || "");
+                    return `
+                        <div class="order-history-item">
+                            <div class="order-row">
+                                <span class="order-date">${date}</span>
+                                <span class="order-amount">${amount}</span>
+                            </div>
+                            <div class="order-products">${order.product_name || ""}</div>
+                            <div class="order-meta">Qty: ${order.quantity || 1} · ${order.payment_method || ""} · ${order.delivery_city || ""}</div>
+                        </div>
+                    `;
+                }).join("");
+            } catch (err) {
+                console.error("Could not load order history:", err);
+                list.innerHTML = '<p class="cart-empty">Could not load your orders right now.</p>';
+            }
+        }
+
+        /* ---------------- Saved addresses ----------------
+         * Requires an 'addresses' table in Supabase: address (text), city
+         * (text), state (text), pincode (text), user_id (uuid, references
+         * auth.users), created_at (timestamptz default now()). Add a Row
+         * Level Security policy so each user only sees their own rows, e.g.
+         * "user_id = auth.uid()" for select/insert.
+         */
+
+        let savedAddresses = [];
+        let selectedAddressIndex = null;
+
+        async function loadSavedAddresses() {
+            const block = document.getElementById("saved-addresses-block");
+            if (!supabaseClient || !currentUser) {
+                block.style.display = "none";
+                return;
+            }
+            try {
+                const { data, error } = await supabaseClient
+                    .from('addresses')
+                    .select('*')
+                    .eq('user_id', currentUser.id)
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                savedAddresses = data || [];
+                renderSavedAddresses();
+            } catch (err) {
+                console.error("Could not load saved addresses:", err);
+                block.style.display = "none";
+            }
+        }
+
+        function renderSavedAddresses() {
+            const block = document.getElementById("saved-addresses-block");
+            const list = document.getElementById("saved-addresses-list");
+
+            if (savedAddresses.length === 0) {
+                block.style.display = "none";
+                return;
+            }
+
+            block.style.display = "block";
+            list.innerHTML = savedAddresses.map((addr, i) => `
+                <div class="saved-address-item" id="saved-address-${i}" onclick="selectSavedAddress(${i})">
+                    ${addr.address}, ${addr.city}, ${addr.state} - ${addr.pincode}
+                </div>
+            `).join("");
+
+            selectSavedAddress(0);
+        }
+
+        function selectSavedAddress(i) {
+            const addr = savedAddresses[i];
+            if (!addr) return;
+
+            document.getElementById("customer-address").value = addr.address || "";
+            document.getElementById("customer-city").value = addr.city || "";
+            document.getElementById("customer-state").value = addr.state || "";
+            document.getElementById("customer-pincode").value = addr.pincode || "";
+
+            selectedAddressIndex = i;
+            document.getElementById("save-address-option").style.display = "none";
+
+            document.querySelectorAll(".saved-address-item").forEach(el => el.classList.remove("selected"));
+            const el = document.getElementById(`saved-address-${i}`);
+            if (el) el.classList.add("selected");
+        }
+
+        function showNewAddressForm() {
+            document.getElementById("customer-address").value = "";
+            document.getElementById("customer-city").value = "";
+            document.getElementById("customer-state").value = "";
+            document.getElementById("customer-pincode").value = "";
+
+            selectedAddressIndex = null;
+            document.getElementById("save-address-option").style.display = "block";
+            document.querySelectorAll(".saved-address-item").forEach(el => el.classList.remove("selected"));
+            document.getElementById("customer-address").focus();
+        }
+
+        function resetAddressForm() {
+            selectedAddressIndex = null;
+            savedAddresses = [];
+            document.getElementById("saved-addresses-block").style.display = "none";
+            document.getElementById("save-address-option").style.display = "block";
+            document.getElementById("save-address-checkbox").checked = true;
+        }
+
+        async function saveNewAddressIfNeeded(customer) {
+            if (!supabaseClient || !currentUser) return;
+            if (selectedAddressIndex !== null) return;
+            if (!document.getElementById("save-address-checkbox").checked) return;
+            if (!customer.address || !customer.city || !customer.state || !customer.pincode) return;
+
+            try {
+                await supabaseClient.from('addresses').insert([{
+                    user_id: currentUser.id,
+                    address: customer.address,
+                    city: customer.city,
+                    state: customer.state,
+                    pincode: customer.pincode
+                }]);
+            } catch (err) {
+                console.error("Could not save address:", err);
+            }
+        }
+    </script>
+
+</body>
+</html>

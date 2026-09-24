@@ -1245,6 +1245,7 @@
                 <button type="submit" class="btn-checkout">Log In</button>
                 <button type="button" class="link-btn" onclick="switchAuthTab('forgot')">Forgot password?</button>
             </form>
+            
 
             <!-- REGISTER -->
             <form id="register-form" class="auth-view">
@@ -1736,6 +1737,58 @@
             el.innerText = message;
             el.style.display = "block";
         }
+        // Detect when a customer clicks the password reset link from their email
+supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "PASSWORD_RECOVERY") {
+        const authModal = document.getElementById("auth-modal");
+        if (authModal) authModal.style.display = "block";
+        
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+        const forgotView = document.getElementById("forgot-view");
+        
+        if (loginForm) loginForm.style.display = "none";
+        if (registerForm) registerForm.style.display = "none";
+        if (forgotView) forgotView.style.display = "none";
+        
+        const resetForm = document.getElementById("forgot-reset-form");
+        if (resetForm) resetForm.style.display = "block";
+        
+        const otpInput = document.getElementById("forgot-otp");
+        if (otpInput && otpInput.closest('.form-group')) {
+            otpInput.closest('.form-group').style.display = "none";
+        }
+        
+        const subtitle = resetForm.querySelector('.subtitle');
+        if (subtitle) subtitle.textContent = "Please choose a secure new password below.";
+    }
+});
+
+// Handle the submission when they click the "Reset Password" button
+const resetFormElement = document.getElementById("forgot-reset-form");
+if (resetFormElement) {
+    resetFormElement.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const newPasswordInput = document.getElementById("forgot-new-password");
+        if (!newPasswordInput) return;
+        
+        const newPassword = newPasswordInput.value;
+
+        const { data, error } = await supabase.auth.updateUser({
+            password: newPassword
+        });
+
+        if (error) {
+            showAuthError(error.message);
+        } else {
+            showAuthSuccess("Password updated successfully! You can now log in.");
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        }
+    });
+}
 
         function switchAuthTab(tab) {
             clearAuthMessages();
